@@ -3,7 +3,7 @@ const Menu =  [
   {
     title: 'Schedule Form',
     group: 'apps',
-    icon: 'dashboard',
+    icon: 'schedule',
     name: 'Schedule',
   },
   // {

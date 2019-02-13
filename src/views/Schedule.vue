@@ -10,11 +10,11 @@
             </v-flex>
             <v-flex xs3>
               <v-select
-                :items="countries"
+                :items="codes"
                 v-model="e1"
                 label="Select the Code"
-                item-text="country"
-                item-value="abbr"
+                item-text="code"
+                item-value="description"
                 single-line
               ></v-select>
             </v-flex>
@@ -23,6 +23,7 @@
                 name="input-4"
                 label=""
                 value=""
+                v-model="e1"  
                 color="info"
                 single-line
               ></v-text-field>
@@ -100,7 +101,7 @@ import BoxChart from '@/components/widgets/chart/BoxChart';
 import ChatWindow from '@/components/chat/ChatWindow';
 import CircleStatistic from '@/components/widgets/statistic/CircleStatistic';
 import LinearStatistic from '@/components/widgets/statistic/LinearStatistic';
-import Countries  from '@/api/country';
+import Codes  from '@/api/code';
 export default {
   components: {
     VWidget,
@@ -121,7 +122,7 @@ export default {
   data: () => ({
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',      
     e1: null,
-    countries: Countries,
+    codes: Codes,
     color: Material,
     selectedTab: 'tab-1',
     linearTrending: [
