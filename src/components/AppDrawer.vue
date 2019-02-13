@@ -11,7 +11,7 @@
     <v-toolbar color="primary darken-1" dark>
       <img v-bind:src="computeLogo" height="36" alt="Web Admin">
       <v-toolbar-title class="ml-0 pl-3">
-        <span class="hidden-sm-and-down">Web Admin</span>
+        <span class="hidden-sm-and-down">PowerForce</span>
       </v-toolbar-title>        
     </v-toolbar>
     <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">

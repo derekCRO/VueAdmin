@@ -8,7 +8,7 @@
               <v-card-text>
                 <div class="layout column align-center">
                   <img src="/static/main-icon.png" alt="Vue Material Admin" width="120" height="120">
-                  <h1 class="flex my-4 primary--text">Web Admin</h1><h2>(WIP)</h2>
+                  <h1 class="flex my-4 primary--text">PowerForce</h1><h2>(WIP)</h2>
                 </div>                
                 <v-form>
                   <v-text-field append-icon="person" name="login" label="Login" type="text" v-model="model.username"></v-text-field>
