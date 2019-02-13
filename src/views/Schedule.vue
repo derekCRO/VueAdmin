@@ -20,6 +20,7 @@
             </v-flex>
             <v-flex xs3>
               <v-text-field
+                :disabled="true"
                 name="input-4"
                 label=""
                 value=""
@@ -29,7 +30,7 @@
               ></v-text-field>
             </v-flex>
           </v-layout>
-          <v-tabs icons-and-text centered dark color="cyan">
+          <v-tabs icons-and-text  dark color="cyan">
             <v-tabs-slider color="yellow"></v-tabs-slider>
             <v-tab href="#tab-1">
               Operations
