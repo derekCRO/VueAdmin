@@ -62,7 +62,7 @@ export default [
     }
   },
   {
-    path: '/dashboard',
+    path: '/schedule',
     meta: { breadcrumb: true },
     name: 'Schedule',
     component: () => import(

@@ -50,7 +50,7 @@ export default {
     login () {
       this.loading = true;
       setTimeout(() => {
-        this.$router.push('/dashboard');
+        this.$router.push('/schedule');
       }, 1000);
     }
   }
