@@ -30,55 +30,6 @@
               ></v-text-field>
             </v-flex>
           </v-layout>
-          <v-tabs icons-and-text  dark color="cyan">
-            <v-tabs-slider color="yellow"></v-tabs-slider>
-            <v-tab href="#tab-1">
-              Operations
-              <v-icon>event</v-icon>
-            </v-tab>
-            <v-tab href="#tab-2">
-              Payroll & Billing
-              <v-icon>folder_open</v-icon>
-            </v-tab>
-            <v-tab href="#tab-3">
-              Reporting & Display
-              <v-icon>account_box</v-icon>
-            </v-tab>
-            <v-tab-item
-              :key="1"
-              :id="'tab-' + 1"
-            >
-              <v-card flat>
-                <v-card-text>
-                  Operations Contents
-                  
-                  
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item
-              :key="2"
-              :id="'tab-' + 2"
-            >
-              <v-card flat>
-                <v-card-text>
-                  Payroll & Billing Contents
-
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-            <v-tab-item
-              :key="3"
-              :id="'tab-' + 3"
-            >
-              <v-card flat>
-                <v-card-text>
-                  Reporting & Display Contents
-
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-          </v-tabs>
           <v-subheader> DataTable Components</v-subheader>
           <v-toolbar flat color="white">
             <v-toolbar-title>Scheduling Control Codes</v-toolbar-title>
@@ -91,7 +42,7 @@
               hide-details
             ></v-text-field>
             <v-dialog v-model="dialog" max-width="700px">
-              <v-btn slot="activator" color="primary" dark class="mb-2">New Item</v-btn>
+              <v-btn slot="activator" color="primary" dark class="mb-2">New Code</v-btn>
               <v-card>
                 <v-card-title>
                   <span class="headline">{{ formTitle }}</span>
@@ -126,7 +77,7 @@
             :items="desserts"
             class="elevation-1"
             :search="search"
-          >
+            >
             <template slot="items" slot-scope="props">
               <td class="text-xs-center">{{ props.item.code }}</td>
               <td class="text-xs-center">{{ props.item.category }}</td>
@@ -150,7 +101,537 @@
             <template slot="no-data">
               <v-btn color="primary" @click="initialize">Reset</v-btn>
             </template>
-          </v-data-table>          
+          </v-data-table>
+          <v-subheader> </v-subheader>  
+          <v-tabs icons-and-text  dark color="cyan">
+            <v-tabs-slider color="yellow"></v-tabs-slider>
+            <v-tab href="#tab-1">
+              Operations
+              <v-icon>event</v-icon>
+            </v-tab>
+            <v-tab href="#tab-2">
+              Payroll & Billing
+              <v-icon>folder_open</v-icon>
+            </v-tab>
+            <v-tab href="#tab-3">
+              Reporting & Display
+              <v-icon>account_box</v-icon>
+            </v-tab>
+            <v-tab-item
+              :key="1"
+              :id="'tab-' + 1"
+            >
+              <v-card flat>
+                <v-card-text >
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader >Category</v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 d-flex>
+                      <v-select
+                        :items="categories"
+                        box
+                        label="Category"
+                      ></v-select>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader>Default Role Type</v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 d-flex>
+                      <v-select
+                        :items="items"
+                        label=""
+                      ></v-select>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-text-field
+                        label=""
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader>Reest Break Length</v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-text-field
+                        label=""
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader>Shift Length</v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-text-field
+                        label=""
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Exclude from Aggregate Hours Calculation"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Include On-Call Log"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Hold Standard Shift Code"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 >
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Requires an Accompanying Shift"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 pt-4 pl-5>
+                      <v-layout>
+                        <v-subheader>Companion shift must be a minimum of </v-subheader>
+                        <v-checkbox
+                          v-model="checkbox"
+                          label="hours"
+                        >
+                        </v-checkbox>
+                      </v-layout>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab1">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 class="tab1-special">
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Update Employees' Briefed Status"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout class="justify-center mr-2">
+                    <v-btn
+                      color="info"
+                      class="white--text"
+                    >
+                      Save
+                      <v-icon right dark>save</v-icon>
+                    </v-btn>
+                    <v-btn
+                      color="red"
+                      class="white--text"
+                    >
+                      Close
+                      <v-icon right dark>close</v-icon>
+                    </v-btn>
+                  </v-layout>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item
+              :key="2"
+              :id="'tab-' + 2"
+            >
+              <v-card flat>
+                <v-card-text>
+                  <v-layout row wrap>
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader>Use Earning Code</v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 d-flex>
+                      <v-select
+                        :items="items"
+                        label=""
+                      ></v-select>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-text-field
+                        label=""
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout  row wrap> 
+                    <v-flex xs6 sm6 lg7>
+                      <fieldset style="padding:30px">
+                        <legend>
+                          <v-flex xs6 sm6 lg12 >
+                            <v-checkbox
+                              v-model="checkbox"
+                              label=" Pay Normal Hours"
+                            ></v-checkbox>
+                          </v-flex>
+                        </legend>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Apply Award (calculate allowances, penalties, loadings etc)"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Pay Meal Allowane"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Flat Amount (pay the normal hourly rate as a one off amount"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Exclude Allowances (ignore allowances on the pay class)"
+                          ></v-checkbox>
+                        </v-flex>
+                      </fieldset>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg5>
+                      <fieldset style="padding:30px">
+                        <legend>
+                          <v-flex xs6 sm6 lg12>
+                            <v-checkbox
+                              v-model="checkbox"
+                              label=" Other Pay Options"
+                            ></v-checkbox>
+                          </v-flex>
+                        </legend>
+                        
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Pay By Task"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Pay Standard Position"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Voluntary Overtime"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Zero Pay"
+                          ></v-checkbox>
+                        </v-flex>
+                      </fieldset>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout  row wrap> 
+                    <v-flex xs6 sm6 lg7>
+                      <fieldset style="padding:30px">
+                        <legend>
+                          Pay as Leave (select one type of leave only)
+                        </legend>
+                        <v-layout row wrap>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Annual Leave"
+                            ></v-checkbox>
+                          </v-flex>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Workers Compensation"
+                            ></v-checkbox>
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap ml-2 >
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Pay Leave Loading"
+                            ></v-checkbox>
+                          </v-flex>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Accrue Time In Lieu or"
+                            ></v-checkbox>
+                          </v-flex>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Pay Time In Liue"
+                            ></v-checkbox>
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Sick Leave"
+                            ></v-checkbox>
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Long Service"
+                            ></v-checkbox>
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap>
+                          <v-flex xs6 sm6 lg4 class="tab2">
+                            <v-checkbox
+                              v-model="checkbox"
+                              label="Rostered Day Off"
+                            ></v-checkbox>
+                          </v-flex>
+                        </v-layout>
+                      </fieldset>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg5 >
+                      <fieldset style="padding:30px">
+                        <legend>
+                          Other Parameters
+                        </legend>
+                        
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Charge the Client for this shift"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Exclude From Timeclock"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Exclude When Recosting"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Include for Overtime"
+                          ></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 lg12 class="tab2">
+                          <v-checkbox
+                            v-model="checkbox"
+                            label="Include in profit and Loss"
+                          ></v-checkbox>
+                        </v-flex>
+                      </fieldset>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout class="justify-center mr-2">
+                    <v-btn
+                      color="info"
+                      class="white--text"
+                    >
+                      Save
+                      <v-icon right dark>save</v-icon>
+                    </v-btn>
+                    <v-btn
+                      color="red"
+                      class="white--text"
+                    >
+                      Close
+                      <v-icon right dark>close</v-icon>
+                    </v-btn>
+                  </v-layout>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+            <v-tab-item
+              :key="3"
+              :id="'tab-' + 3"
+            >
+              <v-card flat>
+                <v-card-text>
+                  <v-layout row wrap>
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader>Invoicing Description</v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-text-field
+                        label=""
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Do not show on Dashboard"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Inactive on SWB dropdown"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3 >
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Internal Use Only"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Omit from Confirmed Shift reporting"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Omit from Hours Worked reporting"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Show Rostering Description"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap class="tab3">
+                    <v-flex xs6 sm6 lg3>
+                      <v-subheader></v-subheader>
+                    </v-flex>
+                    <v-flex xs6 sm6 lg3>
+                      <v-checkbox
+                        v-model="checkbox"
+                        label="Report as a No Fill"
+                      ></v-checkbox>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout class="justify-center" >
+                    <v-flex xs6 sm6 lg6 ml-2>
+                      <fieldset style="padding:30px">
+                        <legend>
+                          <v-flex xs6 sm6 lg12>
+                            <v-checkbox
+                              v-model="checkbox"
+                              label=" Automate Significant Event (Ctrl-E)"
+                            ></v-checkbox>
+                          </v-flex>
+                        </legend>
+                        
+                        <v-layout row wrap class="tab3">
+                          <v-flex xs6 sm6 lg6>
+                            <v-subheader>Ctrl-E Category</v-subheader>
+                          </v-flex>
+                          <v-flex xs6 sm6 lg6 d-flex>
+                            <v-select
+                              :items="items"
+                              label=""
+                            ></v-select>
+                          </v-flex>
+                        </v-layout>
+                        <v-layout row wrap class="tab3">
+                          <v-flex xs6 sm6 lg6>
+                            <v-subheader>Ctrl-E Template</v-subheader>
+                          </v-flex>
+                          <v-flex xs6 sm6 lg6 d-flex>
+                            <v-select
+                              :items="items"
+                              label=""
+                            ></v-select>
+                          </v-flex>
+                        </v-layout>
+                      </fieldset>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout class="justify-center mr-2">
+                    <v-btn
+                      color="info"
+                      class="white--text"
+                    >
+                      Save
+                      <v-icon right dark>save</v-icon>
+                    </v-btn>
+                    <v-btn
+                      color="red"
+                      class="white--text"
+                    >
+                      Close
+                      <v-icon right dark>close</v-icon>
+                    </v-btn>
+                  </v-layout>
+                </v-card-text>
+              </v-card>
+            </v-tab-item>
+          </v-tabs>
+                 
         </v-flex>
       </v-layout>
     </v-container>
@@ -223,6 +704,8 @@ export default {
       description: ''
     },
     search: '',
+    items: ['Training', 'Scheduled Shift', 'Annual Leave', 'Other'],
+    categories: ['Annual Leave','Leave Without pay','Long Service Leave','Meeting','No Show','Other','Other(nRDO)','RDO','Scheduled Shift','Sick','Sleepover','Training','Workers Comp'],
     linearTrending: [
       {
         subheading: 'Sales',
@@ -314,7 +797,7 @@ export default {
   }),
   computed: {
     formTitle () {
-      return this.editedIndex === -1 ? 'New Item' : 'Edit Code'
+      return this.editedIndex === -1 ? 'New Code' : 'Edit Code'
     },
     activity () {
       return API.getActivity();
@@ -424,3 +907,19 @@ export default {
 
 };
 </script>
+<style scoped>
+  .tab1{
+    height: 60px;
+  }
+  .tab1-special{
+    padding-top:0px!important;
+   
+  }
+  .tab2{
+    height:50px;
+  }
+  .tab3{
+    height:60px;
+  }
+</style>
+
