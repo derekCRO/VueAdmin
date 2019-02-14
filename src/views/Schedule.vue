@@ -30,7 +30,7 @@
               ></v-text-field>
             </v-flex>
           </v-layout>
-          <v-subheader> DataTable Components</v-subheader>
+          <v-subheader>  Component for CRUD</v-subheader>
           <v-toolbar flat color="white">
             <v-toolbar-title>Scheduling Control Codes</v-toolbar-title>
             <v-spacer></v-spacer>
@@ -219,14 +219,13 @@
                     <v-flex xs6 sm6 lg3>
                       <v-subheader></v-subheader>
                     </v-flex>
-                    <v-flex xs6 sm6 lg3 pt-4 pl-5>
+                    <v-flex xs6 sm6 lg4 pt-4 pl-5>
                       <v-layout>
                         <v-subheader>Companion shift must be a minimum of </v-subheader>
-                        <v-checkbox
-                          v-model="checkbox"
+                        <v-text-field
                           label="hours"
-                        >
-                        </v-checkbox>
+                          class="hour-field"
+                        ></v-text-field>
                       </v-layout>
                     </v-flex>
                   </v-layout>
@@ -267,8 +266,8 @@
               <v-card flat>
                 <v-card-text>
                   <v-layout row wrap>
-                    <v-flex xs6 sm6 lg3>
-                      <v-subheader>Use Earning Code</v-subheader>
+                    <v-flex xs6 sm6 lg3 >
+                      <v-subheader class="custom-drop">Use Earning Code</v-subheader>
                     </v-flex>
                     <v-flex xs6 sm6 lg3 d-flex>
                       <v-select
@@ -293,7 +292,7 @@
                             ></v-checkbox>
                           </v-flex>
                         </legend>
-                        <v-flex xs6 sm6 lg12 class="tab2">
+                        <v-flex xs6 sm6 lg12 class="tab2 fieldset-special-1">
                           <v-checkbox
                             v-model="checkbox"
                             label="Apply Award (calculate allowances, penalties, loadings etc)"
@@ -330,7 +329,7 @@
                           </v-flex>
                         </legend>
                         
-                        <v-flex xs6 sm6 lg12 class="tab2">
+                        <v-flex xs6 sm6 lg12 class="tab2 fieldset-special-1">
                           <v-checkbox
                             v-model="checkbox"
                             label="Pay By Task"
@@ -364,13 +363,13 @@
                           Pay as Leave (select one type of leave only)
                         </legend>
                         <v-layout row wrap>
-                          <v-flex xs6 sm6 lg4 class="tab2">
+                          <v-flex xs6 sm6 lg4 class="tab2 fieldset-special-2">
                             <v-checkbox
                               v-model="checkbox"
                               label="Annual Leave"
                             ></v-checkbox>
                           </v-flex>
-                          <v-flex xs6 sm6 lg4 class="tab2">
+                          <v-flex xs6 sm6 lg4 class="tab2 fieldset-special-2">
                             <v-checkbox
                               v-model="checkbox"
                               label="Workers Compensation"
@@ -429,7 +428,7 @@
                           Other Parameters
                         </legend>
                         
-                        <v-flex xs6 sm6 lg12 class="tab2">
+                        <v-flex xs6 sm6 lg12 class="tab2 fieldset-special-2">
                           <v-checkbox
                             v-model="checkbox"
                             label="Charge the Client for this shift"
@@ -489,7 +488,7 @@
                 <v-card-text>
                   <v-layout row wrap>
                     <v-flex xs6 sm6 lg3>
-                      <v-subheader>Invoicing Description</v-subheader>
+                      <v-subheader class="custom-drop">Invoicing Description</v-subheader>
                     </v-flex>
                     <v-flex xs6 sm6 lg3>
                       <v-text-field
@@ -586,7 +585,7 @@
                           </v-flex>
                         </legend>
                         
-                        <v-layout row wrap class="tab3">
+                        <v-layout row wrap class="tab3 fieldset-special-3">
                           <v-flex xs6 sm6 lg6>
                             <v-subheader>Ctrl-E Category</v-subheader>
                           </v-flex>
@@ -921,6 +920,21 @@ export default {
   }
   .tab3{
     height:60px;
+  }
+  .fieldset-special-1{
+    margin-top: -70px;
+  }
+  .fieldset-special-2{
+    margin-top: -30px;
+  }
+  .fieldset-special-3{
+    margin-top: -70px!important;
+  }
+  .custom-drop{
+    float:right;
+  }
+  .hour-field{
+    padding-top:0px;
   }
 </style>
 
