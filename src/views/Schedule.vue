@@ -55,7 +55,15 @@
                         <v-text-field v-model="editedItem.code" label="Code"></v-text-field>
                       </v-flex>
                       <v-flex xs12 sm6 md4>
-                        <v-text-field v-model="editedItem.category" label="Category"></v-text-field>
+                        <!-- <v-text-field v-model="editedItem.category" label="Category"></v-text-field> -->
+                        <v-select
+                          :items="categories"
+                          v-model="editedItem.category"
+                          label="Category"
+                          item-text="category"
+                          item-value="description"
+                          single-line
+                        ></v-select>
                       </v-flex>
                       <v-flex xs12 sm6 md4>
                         <v-text-field v-model="editedItem.description" label="Description"></v-text-field>
