@@ -70,6 +70,15 @@ export default [
       `@/views/Schedule.vue`
     )
   },
+  {
+    path: '/rwas',
+    meta: { breadcrumb: true },
+    name: 'rwas',
+    component: () => import(
+      /* webpackChunkName: "routes" */
+      `@/views/Rwas.vue`
+    )
+  },
 
   {
     path: '/media',

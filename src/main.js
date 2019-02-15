@@ -14,3 +14,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+import SortedTablePlugin from "vue-sorted-table";
+Vue.use(SortedTablePlugin);

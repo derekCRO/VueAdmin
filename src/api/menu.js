@@ -2,17 +2,16 @@ const Menu =  [
   { header: 'Forms' },
   {
     title: 'Schedule Form',
-    group: 'apps',
+    group: 'Forms',
     icon: 'schedule',
     name: 'Schedule',
   },
-  // {
-  //   title: 'Chat',
-  //   group: 'apps',
-  //   icon: 'chat_bubble',
-  //   target: '_blank',
-  //   name: 'Chat',
-  // },
+  {
+    title: 'RWAS',
+    group: 'Forms',
+    icon: 'event',
+    name: 'rwas',
+  },
   // {
   //   title: 'Inbox',
   //   group: 'apps',
