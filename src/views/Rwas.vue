@@ -64,16 +64,16 @@
                 :search="search"
             >
                 <template slot="items" slot-scope="props">
-                <td class="text-xs-center">{{ props.item.id }}</td>
-                <td class="text-xs-center">{{ props.item.date }}</td>
-                <td class="text-xs-center">{{ props.item.nextdue }}</td>
-                <td class="text-xs-center">{{ props.item.nextevent }}</td>
-                <td class="text-xs-center">{{ props.item.employee }}</td>
-                <td class="text-xs-center">{{ props.item.contact }}</td>
-                <td class="text-xs-center">{{ props.item.location }}</td>
-                <td class="text-xs-center">{{ props.item.shift }}</td>
-                <td class="text-xs-center">{{ props.item.status }}</td>
-                <td class="text-xs-center">{{ props.item.nextrdq }}</td>
+                    <td class="text-xs-center">{{ props.item.id }}</td>
+                    <td class="text-xs-center">{{ props.item.date }}</td>
+                    <td class="text-xs-center">{{ props.item.nextdue }}</td>
+                    <td class="text-xs-center" style="background-color:cyan">{{ props.item.nextevent }}</td>
+                    <td class="text-xs-center">{{ props.item.employee }}</td>
+                    <td class="text-xs-center">{{ props.item.contact }}</td>
+                    <td class="text-xs-center">{{ props.item.location }}</td>
+                    <td class="text-xs-center">{{ props.item.shift }}</td>
+                    <td class="text-xs-center"  style="background-color:red">{{ props.item.status }}</td>
+                    <td class="text-xs-center">{{ props.item.nextrdq }}</td>
                 </template>
                 <template slot="no-data">
                 <v-btn color="primary" @click="initialize">Reset</v-btn>
@@ -101,15 +101,15 @@
             >
                 <template slot="items" slot-scope="props">
                     <td class="text-xs-center">{{ props.item.id }}</td>
-                    <td class="text-xs-center">{{ props.item.qddate }}</td>
+                    <td :style="'background-color:' + (props.item.color==0?'none':'yellow')" class="text-xs-center" >{{ props.item.qddate }}</td>
                     <td class="text-xs-center">{{ props.item.qdtime }}</td>
                     <td class="text-xs-center">{{ props.item.nextevent }}</td>
-                    <td class="text-xs-center">{{ props.item.employee }}</td>
+                    <td :style="'background-color:' + (props.item.color==0?'none':'yellow')" class="text-xs-center">{{ props.item.employee }}</td>
                     <td class="text-xs-center">{{ props.item.contact }}</td>
-                    <td class="text-xs-center">{{ props.item.location }}</td>
-                    <td class="text-xs-center">{{ props.item.shiftdate }}</td>
-                    <td class="text-xs-center">{{ props.item.sftime }}</td>
-                    <td class="text-xs-center">{{ props.item.status }}</td>
+                    <td :style="'background-color:' + (props.item.color==0?'none':'yellow')" class="text-xs-center">{{ props.item.location }}</td>
+                    <td :style="'background-color:' + (props.item.color==0?'none':'yellow')" class="text-xs-center">{{ props.item.shiftdate }}</td>
+                    <td :style="'background-color:' + (props.item.color==0?'none':'yellow')" lass="text-xs-center">{{ props.item.sftime }}</td>
+                    <td :style="'background-color:' + (props.item.color==0?'none':'yellow')" class="text-xs-center">{{ props.item.status }}</td>
                     <td class="text-xs-center">{{ props.item.rtcid }}</td>
                 </template>
             </v-data-table>
@@ -467,7 +467,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 0
         },
         {
           id: '2',
@@ -480,7 +481,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 1
         },
         {
           id: '3',
@@ -493,7 +495,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 0
         },
         {
           id: '4',
@@ -506,7 +509,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 1
         },
         {
           id: '5',
@@ -519,7 +523,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 1
         },
         {
           id: '6',
@@ -532,7 +537,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 0
         },
         {
           id: '7',
@@ -545,7 +551,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 1
         },
         {
           id: '8',
@@ -558,7 +565,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 0
         },
         {
           id: '9',
@@ -571,7 +579,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 1
         },
         {
           id: '10',
@@ -584,7 +593,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 0
         },
         {
           id: '11',
@@ -597,7 +607,8 @@ export default {
           shiftdate: '25/03/18',
           sftime: '06:00-18:00',
           status:'Due',
-          rtcid: '502*CSA04*18347*64800*21600'
+          rtcid: '502*CSA04*18347*64800*21600',
+          color: 0
         }
         ],
        this.codes=this.desserts
