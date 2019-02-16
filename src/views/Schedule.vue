@@ -52,7 +52,7 @@
                   <v-container grid-list-md>
                     <v-layout wrap>
                       <v-flex xs12 sm6 md4>
-                        <v-text-field v-model="editedItem.code" label="Code"></v-text-field>
+                        <v-text-field v-model="editedItem.code" label="Code" required :rules="codeRules"></v-text-field>
                       </v-flex>
                       <v-flex xs12 sm6 md4>
                         <!-- <v-text-field v-model="editedItem.category" label="Category"></v-text-field> -->
@@ -66,7 +66,7 @@
                         ></v-select>
                       </v-flex>
                       <v-flex xs12 sm6 md4>
-                        <v-text-field v-model="editedItem.description" label="Description"></v-text-field>
+                        <v-text-field v-model="editedItem.description" label="Description" required :rules="descriptionRules"></v-text-field>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -650,7 +650,6 @@ import API from '@/api';
 import Material from 'vuetify/es5/util/colors';
 export default {
   components: {
-   
   },
   data: () => ({
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',      
@@ -669,6 +668,13 @@ export default {
       { text: 'Category',align: 'center', sortable: false,  value: 'category' },
       { text: 'Description', align: 'center', sortable: false,  value: 'description' },
       { text: 'Actions', value: 'name', align: 'center', sortable: false }
+    ],
+    valid:false,
+    codeRules: [
+      v => !!v || 'Name is required'
+    ],
+    descriptionRules:[
+      v => !!v || 'Description is required'
     ],
     desserts: [],
     editedIndex: -1,
