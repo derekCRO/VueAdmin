@@ -120,192 +120,76 @@
 </template>
 
 <script>
-import API from '@/api';
-import EChart from '@/components/chart/echart';
-import MiniStatistic from '@/components/widgets/statistic/MiniStatistic';
-import PostListCard from '@/components/widgets/card/PostListCard';
-import ProfileCard from '@/components/widgets/card/ProfileCard';
-import PostSingleCard from '@/components/widgets/card/PostSingleCard';
-import WeatherCard from '@/components/widgets/card/WeatherCard';
-import PlainTable from '@/components/widgets/list/PlainTable';
-import PlainTableOrder from '@/components/widgets/list/PlainTableOrder';
 import VWidget from '@/components/VWidget';
 import Material from 'vuetify/es5/util/colors';
-import VCircle from '@/components/circle/VCircle';
-import BoxChart from '@/components/widgets/chart/BoxChart';
-import ChatWindow from '@/components/chat/ChatWindow';
-import CircleStatistic from '@/components/widgets/statistic/CircleStatistic';
-import LinearStatistic from '@/components/widgets/statistic/LinearStatistic';
-import Codes  from '@/api/code';
 export default {
   components: {
-    VWidget,
-    MiniStatistic,
-    ChatWindow,
-    VCircle,
-    WeatherCard,
-    PostSingleCard,
-    PostListCard,
-    ProfileCard,
-    EChart,
-    BoxChart,
-    CircleStatistic,
-    LinearStatistic,
-    PlainTable,
-    PlainTableOrder
-},
-  data: () => ({
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',      
-    e1: null,
-    codes: [],
-    color: Material,
-    selectedTab: 'tab-1',
-    dialog: false,
-    headers1: [
-      {
-        text: 'No',
-        align: 'center',
-        sortable: true,
-        value: 'id'
-      },
-      { text: 'Date',align: 'center', sortable: false,  value: 'date'},
-      { text: 'Next Due', align: 'center', sortable: false,  value: 'nextdue'},
-      { text: 'Next Event', align: 'center', sortable: false,  value: 'nextevent'},
-      { text: 'Employee', align: 'center', sortable: false,  value: 'employee'},
-      { text: 'Contact', align: 'center', sortable: false,  value: 'contact'},
-      { text: 'Location', align: 'center', sortable: false,  value: 'location'},
-      { text: 'Shift', align: 'center', sortable: false,  value: 'shift'},
-      { text: 'Status', align: 'center', sortable: false,  value: 'status'},
-      { text: 'NextRDQ', align: 'center', sortable: false,  value: 'nextrdq'}
-    ],
-    headers2: [
-      {
-        text: 'No',
-        align: 'center',
-        sortable: true,
-        value: 'id'
-      },
-      { text: 'QD Date',align: 'center', sortable: false,  value: 'qddate'},
-      { text: 'QD Time Due', align: 'center', sortable: false,  value: 'qdtime'},
-      { text: 'Next Event', align: 'center', sortable: false,  value: 'nextevent'},
-      { text: 'Employee', align: 'center', sortable: false,  value: 'employee'},
-      { text: 'Contact', align: 'center', sortable: false,  value: 'contact'},
-      { text: 'Location', align: 'center', sortable: false,  value: 'location'},
-      { text: 'Shift Date', align: 'center', sortable: false,  value: 'shiftdate'},
-      { text: 'S/F Time', align: 'center', sortable: false,  value: 'sftime'},
-      { text: 'Status', align: 'center', sortable: false,  value: 'status'},
-      { text: 'RTCID', align: 'center', sortable: false,  value: 'rtcid'}
-    ],
-    desserts: [],
-    editedIndex: -1,
-    editedItem: {
-      code: '',
-      category: '',
-      description: ''
+        VWidget,
     },
-    defaultItem: {
-      code: '',
-      category: '',
-      description: ''
-    },
-    search: '',
-    items: ['Training', 'Scheduled Shift', 'Annual Leave', 'Other'],
-    categories: ['Annual Leave','Leave Without pay','Long Service Leave','Meeting','No Show','Other','Other(nRDO)','RDO','Scheduled Shift','Sick','Sleepover','Training','Workers Comp'],
-    frequencies:['1','2','3','4','5'],
-    values: [
-        { name: "Show shifts due for sign-on", id: 2, start: 60, end: 1 },
-        { name: "COLDSTART call employees", id: 1, start: 15, end: 1 },
-        { name: "Show shifts due for sign-off", id: 3, start: 15, end: 1 }
-    ],
-    linearTrending: [
-      {
-        subheading: 'Sales',
-        headline: '2,55',
-        caption: 'increase',
-        percent: 15,
-        icon: {
-          label: 'trending_up',
-          color: 'success'
+    data: () => ({
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',      
+        e1: null,
+        codes: [],
+        color: Material,
+        selectedTab: 'tab-1',
+        dialog: false,
+        headers1: [
+        {
+            text: 'No',
+            align: 'center',
+            sortable: true,
+            value: 'id'
         },
-        linear: {
-          value: 15,
-          color: 'success'
-        }
-      },
-      {
-        subheading: 'Revenue',
-        headline: '6,553',
-        caption: 'increase',
-        percent: 10,
-        icon: {
-          label: 'trending_down',
-          color: 'error'
+        { text: 'Date',align: 'center', sortable: false,  value: 'date'},
+        { text: 'Next Due', align: 'center', sortable: false,  value: 'nextdue'},
+        { text: 'Next Event', align: 'center', sortable: false,  value: 'nextevent'},
+        { text: 'Employee', align: 'center', sortable: false,  value: 'employee'},
+        { text: 'Contact', align: 'center', sortable: false,  value: 'contact'},
+        { text: 'Location', align: 'center', sortable: false,  value: 'location'},
+        { text: 'Shift', align: 'center', sortable: false,  value: 'shift'},
+        { text: 'Status', align: 'center', sortable: false,  value: 'status'},
+        { text: 'NextRDQ', align: 'center', sortable: false,  value: 'nextrdq'}
+        ],
+        headers2: [
+        {
+            text: 'No',
+            align: 'center',
+            sortable: true,
+            value: 'id'
         },
-        linear: {
-          value: 15,
-          color: 'error'
-        }
-      },
-      {
-        subheading: 'Orders',
-        headline: '5,00',
-        caption: 'increase',
-        percent: 50,
-        icon: {
-          label: 'arrow_upward',
-          color: 'info'
+        { text: 'QD Date',align: 'center', sortable: false,  value: 'qddate'},
+        { text: 'QD Time Due', align: 'center', sortable: false,  value: 'qdtime'},
+        { text: 'Next Event', align: 'center', sortable: false,  value: 'nextevent'},
+        { text: 'Employee', align: 'center', sortable: false,  value: 'employee'},
+        { text: 'Contact', align: 'center', sortable: false,  value: 'contact'},
+        { text: 'Location', align: 'center', sortable: false,  value: 'location'},
+        { text: 'Shift Date', align: 'center', sortable: false,  value: 'shiftdate'},
+        { text: 'S/F Time', align: 'center', sortable: false,  value: 'sftime'},
+        { text: 'Status', align: 'center', sortable: false,  value: 'status'},
+        { text: 'RTCID', align: 'center', sortable: false,  value: 'rtcid'}
+        ],
+        desserts: [],
+        editedIndex: -1,
+        editedItem: {
+        code: '',
+        category: '',
+        description: ''
         },
-        linear: {
-          value: 50,
-          color: 'info'
-        }
-      }
-    ],    
-    trending: [
-      {
-        subheading: 'Email',
-        headline: '15+',
-        caption: 'email opens',
-        percent: 15,
-        icon: {
-          label: 'email',
-          color: 'info'
+        defaultItem: {
+        code: '',
+        category: '',
+        description: ''
         },
-        linear: {
-          value: 15,
-          color: 'info'
-        }
-      },        
-      {
-        subheading: 'Tasks',
-        headline: '90%',
-        caption: 'tasks completed.',
-        percent: 90,
-        icon: {
-          label: 'list',
-          color: 'primary'
-        },
-        linear: {
-          value: 90,
-          color: 'success'
-        }
-      },        
-      {
-        subheading: 'Issues',
-        headline: '100%',
-        caption: 'issues fixed.',
-        percent: 100,
-        icon: {
-          label: 'bug_report',
-          color: 'primary'
-        },
-        linear: {
-          value: 100,
-          color: 'error'
-        }
-      },        
-    ]    
-  }),
+        search: '',
+        items: ['Training', 'Scheduled Shift', 'Annual Leave', 'Other'],
+        categories: ['Annual Leave','Leave Without pay','Long Service Leave','Meeting','No Show','Other','Other(nRDO)','RDO','Scheduled Shift','Sick','Sleepover','Training','Workers Comp'],
+        frequencies:['1','2','3','4','5'],
+        values: [
+            { name: "Show shifts due for sign-on", id: 2, start: 60, end: 1 },
+            { name: "COLDSTART call employees", id: 1, start: 15, end: 1 },
+            { name: "Show shifts due for sign-off", id: 3, start: 15, end: 1 }
+        ],
+    }),
   computed: {
     formTitle () {
       return this.editedIndex === -1 ? 'New Code' : 'Edit Code'
