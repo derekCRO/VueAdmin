@@ -67,7 +67,7 @@ export default {
         : Util.randomElement(['blue', 'indigo', 'success', 'error', 'pink']);
     },
 
-    chatStatusColor (item) {
+    chatStatusColor () {
       return Util.randomElement(['blue', 'indigo', 'success', 'error', 'pink']);
     }
   }  

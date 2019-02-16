@@ -49,13 +49,9 @@
   </v-toolbar>
 </template>
 <script>
-import NotificationList from '@/components/widgets/list/NotificationList';
 import Util from '@/util';
 export default {
   name: 'app-toolbar',
-  components: {
-    NotificationList
-  },
   data: () => ({
     items: [
       {
@@ -78,7 +74,7 @@ export default {
         icon: 'fullscreen_exit',
         href: '#',
         title: 'Logout',
-        click: (e) => {
+        click: () => {
           window.getApp.$emit('APP_LOGOUT');
         }
       }

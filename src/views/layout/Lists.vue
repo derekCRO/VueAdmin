@@ -414,7 +414,7 @@ export default {
     }
   },
   methods: {
-    handleClick (e) {
+    handleClick () {
       return false;
     }
   }

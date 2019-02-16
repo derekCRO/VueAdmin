@@ -108,8 +108,8 @@ export default {
           break;
         default:
           // line
-          this.defaultOption.push(['series[0].smooth', true]);
-          this.defaultOption.push(['xAxis.boundaryGap', false]);
+          // this.defaultOption.push(['series[0].smooth', true]);
+          // this.defaultOption.push(['xAxis.boundaryGap', false]);
           break;
       }
       return this.defaultOption;
