@@ -7,10 +7,10 @@
             <v-subheader> RWA03 </v-subheader>
             <v-layout>
             </v-layout>
-            <v-toolbar flat color="white" style="height: 140px;">
+            <v-toolbar flat color="white" class="toolbar1" >
                 <v-layout column class="justify-center">
                     <v-btn  color="primary" dark class="mb-2">222</v-btn>
-                    <div style="text-align:center">
+                    <div class="toolbar-div">
                         <v-btn  color="blue" icon dark><v-icon>cached</v-icon></v-btn>
                     </div>
                 </v-layout>
@@ -18,26 +18,26 @@
                     <SortedTable :values="values">
                         <thead>
                             <tr>
-                                <th scope="col" style="text-align: center; width: 10rem;">
+                                <th scope="col" class="theader">
                                     
                                 </th>
-                                <th scope="col" style="text-align: center; width: 15rem;">
+                                <th scope="col" class="theader">
                                     
                                 </th>
-                                <th scope="col" style="text-align: center; width: 10rem;">
+                                <th scope="col" class="theader">
                                     Mins Before Start
                                 </th>
-                                <th scope="col" style="text-align: center; width: 10rem;">
+                                <th scope="col" class="theader">
                                     Mins after End
                                 </th>
                             </tr>
                         </thead>
                         <tbody slot="body" slot-scope="sort">
                             <tr v-for="value in sort.values" :key="value.id">
-                                <td style="text-align: center;">{{ value.id }}</td>
-                                <td style="text-align: center;">{{ value.name }}</td>
-                                <td style="text-align: center;">{{ value.start }}</td>
-                                <td style="text-align: center;">{{ value.end }}</td>
+                                <td class="tbody" >{{ value.id }}</td>
+                                <td class="tbody" >{{ value.name }}</td>
+                                <td class="tbody" >{{ value.start }}</td>
+                                <td class="tbody" >{{ value.end }}</td>
                             </tr>
                         </tbody>
                     </SortedTable>
@@ -530,33 +530,18 @@ export default {
 };
 </script>
 <style scoped>
-  .tab1{
-    height: 60px;
+  .toolbar1{
+    height: 140px;
   }
-  .tab1-special{
-    padding-top:0px!important;
-   
+  .toolbar-div{
+    text-align:center;
   }
-  .tab2{
-    height:50px;
+  .theader{
+    text-align: center; 
+    width: 10rem;
   }
-  .tab3{
-    height:60px;
-  }
-  .fieldset-special-1{
-    margin-top: -70px;
-  }
-  .fieldset-special-2{
-    margin-top: -30px;
-  }
-  .fieldset-special-3{
-    margin-top: -70px!important;
-  }
-  .custom-drop{
-    float:right;
-  }
-  .hour-field{
-    padding-top:0px;
+  .tbody{
+    text-align:center;
   }
 </style>
 
