@@ -93,7 +93,7 @@
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn color="blue darken-1" flat @click="close">Cancel</v-btn>
-                  <v-btn color="blue darken-1" flat @click="save" :disabled="!valid" :click="validate">Save</v-btn>
+                  <v-btn color="blue darken-1" flat @click="save" :disabled="!valid || isFirst" :click="validate">Save</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -579,7 +579,9 @@
 <script>
 import API from "@/api";
 import Material from "vuetify/es5/util/colors";
+import { validationMixin } from 'vuelidate'
 export default {
+  mixins: [validationMixin],
   components: {},
   data: () => ({
     text:
@@ -607,18 +609,18 @@ export default {
     ],
     valid: false,
     codeRules: [v => !!v.trim() || "Name is required"],
-    descriptionRules: [v => !!v || "Description is required"],
+    descriptionRules: [v => !!v.trim() || "Description is required"],
     desserts: [],
     editedIndex: -1,
-    editedItem: {
-      code: "",
-      category: "",
-      description: ""
+    editedItem : {
+      code: null,
+      category: null,
+      description:null
     },
     defaultItem: {
-      code: "",
-      category: "",
-      description: ""
+      code: null,
+      category: null,
+      description: null
     },
     search: "",
     items: ["Training", "Scheduled Shift", "Annual Leave", "Other"],
@@ -638,7 +640,12 @@ export default {
       "Workers Comp"
     ]
   }),
+ 
   computed: {
+    //validation New Code
+    isFirst(){
+      return this.editedItem.code==null;
+    },
     formTitle() {
       return this.editedIndex === -1 ? "New Code" : "Edit Code";
     },
@@ -722,6 +729,7 @@ export default {
     validate () {
       if (this.$refs.form.validate()) {
         this.snackbar = true
+        
       }
     },
     editItem(item) {
