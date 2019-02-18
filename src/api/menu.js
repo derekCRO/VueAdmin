@@ -1,4 +1,4 @@
-const Menu =  [
+const Menu = [
   { header: "Forms" },
   {
     title: "Schedule Form",
