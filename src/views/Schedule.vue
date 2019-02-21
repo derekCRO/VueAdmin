@@ -23,7 +23,7 @@
                 :disabled="true"
                 name="input-4"
                 label=""
-                value=""
+                value=""   
                 v-model="e1"
                 color="info"
                 single-line
